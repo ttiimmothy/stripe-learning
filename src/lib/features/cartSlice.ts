@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Product as ProudctState, CartState } from "@/types/cartSlice.type";
-import {Product} from "@/types/product.type";
+import { Product, CartState } from "@/types/cartSlice.type";
+import {ProductType} from "@/generated/graphql/graphql";
+import {ProductCardType} from "@/types/productCard.type";
 
 const initialState: CartState = {
   products: [],
@@ -15,20 +16,20 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: { payload: Product }) => {
+    addToCart: (state, action: { payload: ProductCardType }) => {
       const isExist = state.products.find(
-        (product: Product) => product.id === action.payload.id
+        (product: Product) => product._id === action.payload._id
       );
       if (!isExist) {
         state.products.push({...action.payload, quantity: 1})
       } else {
-        console.log("Item already added");
+        // console.log("Item already added");
       }
       updateState(state);
     },
     updateQuantity: (state, action: { payload: { id: number, type: string } }) => {
       state.products.map(product => {
-        if (product.id === action.payload.id) {
+        if (parseInt(product._id) === action.payload.id) {
           if (action.payload.type === "increment") {
             product.quantity += 1;
           } else if (action.payload.type === "decrement") {
@@ -41,7 +42,7 @@ export const cartSlice = createSlice({
       updateState(state);
     },
     removeFromCart: (state, action: { payload: number }) => {
-      state.products = state.products.filter(product => product.id !== action.payload);
+      state.products = state.products.filter(product => parseInt(product._id) !== action.payload);
       updateState(state);
     },
     clearCart: (state) => {
@@ -54,11 +55,11 @@ export const cartSlice = createSlice({
   },
 });
 
-export const setSelectedItems = (state: CartState) => state.products.reduce((total: number, product: ProudctState) => {
+export const setSelectedItems = (state: CartState) => state.products.reduce((total: number, product: Product) => {
   return Number(total + product.quantity)
 }, 0)
 
-export const setTotalPrice = (state: CartState) => state.products.reduce((total: number, product: ProudctState) => {
+export const setTotalPrice = (state: CartState) => state.products.reduce((total: number, product: Product) => {
   return Number(total + product.price * product.quantity)
 }, 0)
 

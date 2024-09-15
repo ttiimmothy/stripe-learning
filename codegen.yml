@@ -1,0 +1,12 @@
+overwrite: true
+schema: "http://localhost:3002/api/v1/graphql"  # Replace with your GraphQL API endpoint
+documents: "src/**/*.ts"
+generates:
+  src/generated/graphql/:
+    # plugins:
+    #   - "typescript"
+    #   - "typescript-operations"
+    #   - "typescript-react-apollo"
+    preset: "client"
+    presetConfig:
+      fragmentMasking: false

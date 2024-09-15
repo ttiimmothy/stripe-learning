@@ -1,22 +1,39 @@
 "use client"
+// import {useLoginMutation} from "@/lib/features/authApi";
+import {useLogin} from "@/lib/services/useLogin";
+import {AppDispatch} from "@/lib/store";
 import Link from "next/link";
 import React, {useState} from 'react'
+import {useDispatch} from "react-redux";
+import {useRouter} from "next/navigation"
+import {setUser} from "@/lib/features/authSlice";
 
 const Login = () => {
   const [message, setMessage] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const dispatch = useDispatch<AppDispatch>()
+  // const [login, {isLoading: loginLoading}] = useLoginMutation()
+  const [login] = useLogin()
+  const router = useRouter()
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = {
       email,
       password
     }
-    // const res = await fetch("/api/login", {
-    //   method: "POST",
-    //   body: JSON.stringify(data)
-    // })
-    // setMessage("Invalid email or password")
+    try {
+      // const response = await login(data)
+      // console.log(response)
+      const response = await login({variables:{input:data}})
+      console.log(response)
+      const {token, user} = response.data?.login
+      dispatch(setUser({user}))
+      alert("Login successful")
+      router.push("/")
+    } catch (error) {
+      setMessage("Please provide a valid email and password")
+    }
   }
   return (
     <section className="h-screen flex items-center justify-center">

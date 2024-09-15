@@ -1,5 +1,7 @@
 "use client"
+import {useCreateUser} from "@/lib/services/useCreateUser";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, {useState} from 'react'
 
 const Register = () => {
@@ -7,6 +9,8 @@ const Register = () => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [createUser] = useCreateUser()
+  const router = useRouter()
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = {
@@ -14,7 +18,13 @@ const Register = () => {
       email,
       password
     }
-    console.log(data)
+    try {
+      await createUser({variables: {input: data}})
+      alert("Registration successful")
+      router.push("/login")
+    } catch (error) {
+      setMessage("Registration failed")
+    }
     // const res = await fetch("/api/login", {
     //   method: "POST",
     //   body: JSON.stringify(data)

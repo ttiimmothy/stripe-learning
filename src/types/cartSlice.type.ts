@@ -1,15 +1,7 @@
-export type Product = {
-  id: number;
-  name: string;
-  category: string;
-  description: string;
-  price: number;
-  oldPrice?: number;
-  image: string;
-  color: string;
-  rating: number;
-  quantity: number;
-}
+import {ProductType} from "@/generated/graphql/graphql";
+import {ProductCardType} from "./productCard.type";
+
+export type Product = ProductCardType & { quantity: number };
 
 export type CartState = {
   products: Product[];

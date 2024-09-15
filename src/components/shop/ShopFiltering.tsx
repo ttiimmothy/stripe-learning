@@ -3,7 +3,8 @@ import {ShopFilteringProps} from "./ShopFilteringProps.interface";
 
 const ShopFiltering = ({filters, filterState, setFilterState, clearFilters}:ShopFilteringProps) => {
   return (
-    <div className="space-y-5 flex-shrink-0">
+    <div className="flex-shrink-0 relative">
+      <div className="sticky top-28 pt-8 space-y-5">
       <h3>Filters</h3>
       {/* categories */}
       <div className="flex flex-col space-y-2">
@@ -63,6 +64,7 @@ const ShopFiltering = ({filters, filterState, setFilterState, clearFilters}:Shop
         ))}
       </div>
       <button onClick={clearFilters} className="w-full py-1 px-4 bg-primary text-white rounded">Clear All Filters</button>
+      </div>
     </div>
   )
 }
