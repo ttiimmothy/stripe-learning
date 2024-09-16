@@ -1,0 +1,31 @@
+name: ci
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  eslint-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      # - name: Install bun
+      #   uses: oven-sh/setup-bun@v2
+      - name: CI, Linter and Build
+        run: |
+          pnpm ci --legacy-peer-deps
+          pnpm run lint
+          pnpm run build
+      # - name: Install, Linter and Build
+      #   run: |
+      #     bun install
+      #     bun run lint
+      #     bun run build
