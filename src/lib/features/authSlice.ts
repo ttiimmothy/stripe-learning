@@ -1,3 +1,4 @@
+import {User} from "@/generated/graphql/graphql";
 import {createSlice} from "@reduxjs/toolkit";
 
 const loadUserFromLocalStorage = () => {
@@ -10,7 +11,7 @@ const loadUserFromLocalStorage = () => {
   }
 }
 
-const initialState = loadUserFromLocalStorage()
+const initialState: {user: User | null} = loadUserFromLocalStorage()
 
 const authSlice = createSlice({
   name: "auth",

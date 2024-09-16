@@ -1,6 +1,6 @@
 "use client"
 // import {useLoginMutation} from "@/lib/features/authApi";
-import {useLogin} from "@/lib/services/useLogin";
+import {useLogin} from "@/lib/services/user/useLogin";
 import {AppDispatch} from "@/lib/store";
 import Link from "next/link";
 import React, {useState} from 'react'
@@ -26,7 +26,7 @@ const Login = () => {
       // const response = await login(data)
       // console.log(response)
       const response = await login({variables:{input:data}})
-      console.log(response)
+      // console.log(response)
       const {token, user} = response.data?.login
       dispatch(setUser({user}))
       alert("Login successful")

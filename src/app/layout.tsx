@@ -8,6 +8,7 @@ import Footer from "@/components/lib/ui/Footer";
 import StoreProvider from "./StoreProvider";
 import ApolloGraphqlProvider from "./ApolloProvider";
 import ClientLayout from "./ClientLayout";
+import "symbol-observable"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

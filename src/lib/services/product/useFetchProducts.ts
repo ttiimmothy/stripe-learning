@@ -1,5 +1,5 @@
 import { useQuery, useApolloClient } from "@apollo/client";
-import {invalidateQueries} from "../apolloClient";
+import {invalidateQueries} from "@/lib/apolloClient";
 import {graphql} from "@/generated/graphql";
 import {GetProductsQueryVariables} from "@/generated/graphql/graphql";
 const fetchProductsDocument = graphql(`
@@ -55,7 +55,12 @@ const fetchProductDocument = graphql(`
   }
 `);
 
-export const useFetchProduct = () => {
+export const useFetchProduct = (id:string, {skip}: {skip?: boolean} = {skip: false}) => {
   const client = useApolloClient();
-  return useQuery(fetchProductDocument);
+  return useQuery(fetchProductDocument, {
+    variables: {
+      id
+    },
+    skip: skip
+  });
 };

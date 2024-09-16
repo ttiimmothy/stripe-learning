@@ -23,6 +23,16 @@ const config: Config = {
         'custom-1200': '1200px', 
         'custom-900': '900px', 
       },
+      minHeight: {
+        128: '32rem',
+        160: '40rem',
+        192: '48rem',
+      },
+      zIndex: {
+        50: "50",
+        55: "55",
+        60: "60",
+      }
     },
   },
   plugins: [],

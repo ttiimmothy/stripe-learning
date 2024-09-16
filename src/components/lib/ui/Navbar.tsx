@@ -1,13 +1,13 @@
 "use client";
 import CartModal from "@/components/shop/CartModal";
-import {useGetUser} from "@/lib/services/useGetUser";
+import {useGetUser} from "@/lib/services/user/useGetUser";
 import {AppDispatch, RootState} from "@/lib/store";
 import Link from "next/link";
 import React, {useEffect, useRef, useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import Image from "next/image";
 import AvatarImg from "@/assets/avatar.png"
-import {useLogout} from "@/lib/services/useLogout";
+import {useLogout} from "@/lib/services/user/useLogout";
 import {useRouter} from "next/navigation";
 import {logout} from "@/lib/features/authSlice";
 export const Navbar = () => {

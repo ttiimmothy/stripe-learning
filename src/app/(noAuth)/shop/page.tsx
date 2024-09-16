@@ -6,7 +6,7 @@ import productsData from "@/data/products.json"
 import ProductCard from "@/components/shop/ProductCard";
 import ShopFiltering from "@/components/shop/ShopFiltering";
 import {Filters, FilterState} from "@/types/filter.type";
-import {useFetchProducts} from "@/lib/services/useFetchProducts";
+import {useFetchProducts} from "@/lib/services/product/useFetchProducts";
 import {ProductType} from "@/generated/graphql/graphql";
 
 const ShopPage = () => {
@@ -50,11 +50,11 @@ const ShopPage = () => {
       <section className="section__container">
         <div className="flex flex-col md:flex-row gap-8 md:gap 12">
           <ShopFiltering filters={filters} filterState={filterState} setFilterState={setFilterState} clearFilters={clearFilters}/>
-          <div className="md:min-h-[80vh]">
+          <div className="md:min-h-[70vh]">
             {loading ? <div>Loading...</div> : error ? <div>Error loading products</div> :
             <>
             <h3 className="text-xl font-medium mb-4">Showing {startProduct} to {endProduct} of {products?.products.totalProducts} products</h3>
-            {products && <ProductCard products={totalFetchedProducts} />}
+            <div className="min-h-192">{products && <ProductCard products={totalFetchedProducts} />}</div>
             <div className="mt-6 flex justify-center">
               <button className={"bg-gray-300 text-gray-700 px-4 py-2 mr-2 rounded-md"} onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
               {

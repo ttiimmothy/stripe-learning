@@ -1,5 +1,5 @@
 import {useMutation, useApolloClient} from "@apollo/client";
-import {invalidateQueries} from "../apolloClient";
+import {invalidateQueries} from "@/lib/apolloClient";
 import {gql} from "@apollo/client";
 import {useEffect} from "react";
 import {getUserQuery} from "./useGetUser";

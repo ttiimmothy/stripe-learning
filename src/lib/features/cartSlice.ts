@@ -23,13 +23,14 @@ export const cartSlice = createSlice({
       if (!isExist) {
         state.products.push({...action.payload, quantity: 1})
       } else {
+        alert("Item already added");
         // console.log("Item already added");
       }
       updateState(state);
     },
-    updateQuantity: (state, action: { payload: { id: number, type: string } }) => {
+    updateQuantity: (state, action: { payload: { id: string, type: string } }) => {
       state.products.map(product => {
-        if (parseInt(product._id) === action.payload.id) {
+        if (product._id === action.payload.id) {
           if (action.payload.type === "increment") {
             product.quantity += 1;
           } else if (action.payload.type === "decrement") {
@@ -41,8 +42,8 @@ export const cartSlice = createSlice({
       });
       updateState(state);
     },
-    removeFromCart: (state, action: { payload: number }) => {
-      state.products = state.products.filter(product => parseInt(product._id) !== action.payload);
+    removeFromCart: (state, action: { payload: string }) => {
+      state.products = state.products.filter(product => product._id !== action.payload);
       updateState(state);
     },
     clearCart: (state) => {

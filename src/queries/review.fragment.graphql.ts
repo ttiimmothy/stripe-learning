@@ -14,3 +14,16 @@ export const ReviewFragment = graphql(`
     updatedAt
   }
 `);
+
+
+export const ReviewsFragment = gql(`
+  fragment ReviewsFragment on Review {
+    _id
+    comment
+    rating
+    userId
+    productId
+    createdAt
+    updatedAt
+  }
+`);
