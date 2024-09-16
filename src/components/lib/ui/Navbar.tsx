@@ -61,7 +61,7 @@ export const Navbar = () => {
           <li className="link"><Link href={"/"}>Home</Link></li>
           <li className="link"><Link href={"/shop"}>Shop</Link></li>
           <li className="link"><Link href={"/"}>Pages</Link></li>
-          <li className="link"><Link href="/contact">Contact</Link></li>
+          <li className="link"><Link href={"/"}>Contact</Link></li>
         </ul>
         <div className="nav__logo">
           <Link href={"/"}>Hibyebye<span>.</span></Link>
