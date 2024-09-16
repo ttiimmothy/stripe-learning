@@ -19,9 +19,11 @@ jobs:
           version: 9
       # - name: Install bun
       #   uses: oven-sh/setup-bun@v2
-      - name: CI, Linter and Build
+      - name: Install, Lint and Build
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
         run: |
-          pnpm ci --legacy-peer-deps
+          pnpm install
           pnpm run lint
           pnpm run build
       # - name: Install, Linter and Build
