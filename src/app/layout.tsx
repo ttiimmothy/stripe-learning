@@ -3,11 +3,11 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./page.css";
 import 'remixicon/fonts/remixicon.css';
-import {Navbar} from "@/components/lib/ui/Navbar";
-import Footer from "@/components/lib/ui/Footer";
+// import {Navbar} from "@/components/lib/ui/Navbar";
+// import Footer from "@/components/lib/ui/Footer";
 import StoreProvider from "./StoreProvider";
 import ApolloGraphqlProvider from "./ApolloProvider";
-import ClientLayout from "./ClientLayout";
+// import ClientLayout from "./ClientLayout";
 import "symbol-observable"
 
 const geistSans = localFont({

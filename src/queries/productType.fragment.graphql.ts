@@ -1,7 +1,7 @@
-import {graphql} from "@/generated/graphql";
+// import {graphql} from "@/generated/graphql";
 import {gql} from "@apollo/client";
 
-export const ProductTypeFragment = graphql(`
+export const ProductTypeFragment = gql(`
   fragment ProductsFragment on ProductType {
     _id
     name

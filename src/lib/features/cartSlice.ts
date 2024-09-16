@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Product, CartState } from "@/types/cartSlice.type";
-import {ProductType} from "@/generated/graphql/graphql";
+// import {ProductType} from "@/generated/graphql/graphql";
 import {ProductCardType} from "@/types/productCard.type";
 
 const initialState: CartState = {

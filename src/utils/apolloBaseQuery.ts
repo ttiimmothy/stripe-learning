@@ -5,6 +5,7 @@ import {DocumentNode} from "graphql";
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 
 export const apolloBaseQuery: BaseQueryFn<
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   { document: DocumentNode; variables?: any },
   unknown,
   ApolloError

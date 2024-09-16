@@ -1,5 +1,5 @@
 import {graphql} from "@/generated/graphql";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 
 const postReviewDocument = graphql(`
   mutation CreateReview($input: CreateReviewInput!) {

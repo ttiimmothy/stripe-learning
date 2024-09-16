@@ -1,16 +1,17 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import {createApi} from "@reduxjs/toolkit/query/react";
 import {graphqlRequestBaseQuery} from "@/utils/graphql-request-base-query";
-import {gql, useMutation} from "@apollo/client";
+// import {gql, useMutation} from "@apollo/client";
 // import {client} from "@/lib/apolloClient";
 import {client} from "@/lib/graphqlClient";
-import {UserFragment} from "@/queries/user.fragment.graphql";
-import {apolloBaseQuery} from "@/utils/apolloBaseQuery";
-import {graphql} from "@/generated/graphql";
+// import {UserFragment} from "@/queries/user.fragment.graphql";
+// import {apolloBaseQuery} from "@/utils/apolloBaseQuery";
+// import {graphql} from "@/generated/graphql";
 
 const authApi = createApi({
   reducerPath: 'authApi',
   // baseQuery: apolloBaseQuery,
   baseQuery: graphqlRequestBaseQuery({client}),
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   endpoints: (builder) => ({
     // createUser: builder.mutation({
     //   query: (newUser) => ({

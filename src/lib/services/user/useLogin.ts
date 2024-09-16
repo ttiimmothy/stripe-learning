@@ -1,6 +1,6 @@
 import {graphql} from "@/generated/graphql";
-import {LoginUserInput} from "@/generated/graphql/graphql";
-import {gql, useMutation} from "@apollo/client";
+// import {LoginUserInput} from "@/generated/graphql/graphql";
+import {useMutation} from "@apollo/client";
 
 // use fragment need to use graphql from "@/generated/graphql"
 const loginDocument = graphql(`

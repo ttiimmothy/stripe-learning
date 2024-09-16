@@ -5,7 +5,7 @@ import RatingStars from "../lib/RatingStars";
 import {useDispatch} from "react-redux";
 import { AppDispatch } from "@/lib/store";
 import { addToCart } from "@/lib/features/cartSlice";
-import {ProductType} from "@/generated/graphql/graphql";
+// import {ProductType} from "@/generated/graphql/graphql";
 import {ProductCardType} from "@/types/productCard.type";
 
 const ProductCard = ({ products }: { products: ProductCardType[] }) => {

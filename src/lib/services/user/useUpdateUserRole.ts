@@ -1,8 +1,8 @@
-import {useMutation, useApolloClient} from "@apollo/client";
-import {invalidateQueries} from "@/lib/apolloClient";
+import {useMutation} from "@apollo/client";
+// import {invalidateQueries} from "@/lib/apolloClient";
 import {gql} from "@apollo/client";
-import {useEffect} from "react";
-import {getUserQuery} from "./useGetUser";
+// import {useEffect} from "react";
+// import {getUserQuery} from "./useGetUser";
 const updateUserRoleDocument = gql(`
   mutation UpdateUserRole($input: UpdateUserRoleInput!) {
     updateUserRole(updateUserRoleInput: $input) {
@@ -12,7 +12,7 @@ const updateUserRoleDocument = gql(`
 `)
 
 export const useUpdateUserRole = () => {
-  const client = useApolloClient();
+  // const client = useApolloClient();
   const [updateUserRole, {data, loading, error}] = useMutation(updateUserRoleDocument, {
     // onCompleted: () => {
     //   invalidateQueries(client, ["user"])

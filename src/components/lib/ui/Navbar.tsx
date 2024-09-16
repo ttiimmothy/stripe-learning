@@ -1,9 +1,9 @@
 "use client";
 import CartModal from "@/components/shop/CartModal";
-import {useGetUser} from "@/lib/services/user/useGetUser";
+// import {useGetUser} from "@/lib/services/user/useGetUser";
 import {AppDispatch, RootState} from "@/lib/store";
 import Link from "next/link";
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import Image from "next/image";
 import AvatarImg from "@/assets/avatar.png"
@@ -18,7 +18,7 @@ export const Navbar = () => {
   }
   const dispatch = useDispatch<AppDispatch>();
   const {user} = useSelector((state: RootState) => state.auth);
-  const {data, loading, error} = useGetUser();
+  // const {data, loading, error} = useGetUser();
   const [logoutUser] = useLogout();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const handleDropdownToggle = () => {
@@ -39,7 +39,7 @@ export const Navbar = () => {
     {"label": "Orders", path: "/dashboard/orders"}
   ]
   const dropdownMenus = user?.role === "admin" ? [...adminDropdownMenus] : [...userDropdownMenus]
-  const [profilePicture, setProfilePicture] = useState<string | null>(null)
+  // const [profilePicture, setProfilePicture] = useState<string | null>(null)
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     setIsMounted(true);
@@ -96,7 +96,7 @@ export const Navbar = () => {
             {isDropdownOpen && (
               <div className="absolute right-0 mt-3 p-4 w-48 bg-white border-gray-200 rounded-lg shadow-lg z-50">
                 <ul className="font-medium space-y-4 p-2">
-                  {dropdownMenus.map((menu, index) => (
+                  {dropdownMenus.map((menu) => (
                     <li key={menu.label}>
                       <Link className="dropdown-items" onClick={() => setIsDropdownOpen(false)} href={menu.path}>{menu.label}</Link>
                     </li>

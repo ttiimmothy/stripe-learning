@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { ApolloClient, InMemoryCache, createHttpLink, NormalizedCacheObject } from '@apollo/client';
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 if (!apiUrl) {
@@ -15,7 +15,7 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const invalidateQueries = (client: ApolloClient<any>, tags: string[]) => {
+export const invalidateQueries = (client: ApolloClient<NormalizedCacheObject>, tags: string[]) => {
   const invalidationTimes = JSON.parse(localStorage.getItem("apollo-invalidation-times") || '{}');
   const now = Date.now();
 

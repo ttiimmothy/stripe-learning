@@ -1,13 +1,14 @@
 "use client"
 import Banner from "@/components/lib/ui/Banner";
-import {Product} from "@/types/product.type";
-import React, {useEffect, useState} from 'react'
-import productsData from "@/data/products.json"
+// import {Product} from "@/types/product.type";
+import React, {useState} from 'react'
+// import productsData from "@/data/products.json"
 import ProductCard from "@/components/shop/ProductCard";
 import ShopFiltering from "@/components/shop/ShopFiltering";
 import {Filters, FilterState} from "@/types/filter.type";
 import {useFetchProducts} from "@/lib/services/product/useFetchProducts";
-import {ProductType} from "@/generated/graphql/graphql";
+// import {ProductType} from "@/generated/graphql/graphql";
+import Pagination from "@/components/Pagination";
 
 const ShopPage = () => {
   const filters:Filters = {
@@ -22,7 +23,8 @@ const ShopPage = () => {
     priceRange: {label: "", min: 0, max: Infinity},
   })
   const [currentPage, setCurrentPage] = useState(1)
-  const [productsPerPage, setProductsPerPage] = useState(16)
+  // const [productsPerPage, setProductsPerPage] = useState(16)
+  const productsPerPage = 16
   const {category, color, priceRange} = filterState;
   const [minPrice, maxPrice] = [priceRange.min, priceRange.max]
   const {data:products, loading, error} = useFetchProducts({input: {category: category !== "all" ? category : "", color: color !== "all" ? color : "", minPrice: isNaN(minPrice) ? "0" : minPrice.toString(), 
@@ -55,7 +57,8 @@ const ShopPage = () => {
             <>
             <h3 className="text-xl font-medium mb-4">Showing {startProduct} to {endProduct} of {products?.products.totalProducts} products</h3>
             <div className="min-h-192">{products && <ProductCard products={totalFetchedProducts} />}</div>
-            <div className="mt-6 flex justify-center">
+            <Pagination currentPage={currentPage} totalPages={products?.products.totalPages || 1} handlePageChange={handlePageChange} />
+            {/* <div className="mt-6 flex justify-center">
               <button className={"bg-gray-300 text-gray-700 px-4 py-2 mr-2 rounded-md"} onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
               {
                 [...Array(products?.products.totalPages)].map((_, index) => (
@@ -64,7 +67,7 @@ const ShopPage = () => {
                 ))
               }
               <button className={"bg-gray-300 text-gray-700 px-4 py-2 ml-2 rounded-md"} onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === products?.products.totalPages}>Next</button>
-            </div>
+            </div> */}
             </>
             }
           </div>
