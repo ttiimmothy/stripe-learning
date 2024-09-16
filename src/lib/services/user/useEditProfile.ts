@@ -1,6 +1,5 @@
-import {useMutation, useApolloClient} from "@apollo/client";
-import {invalidateQueries} from "../apolloClient";
-import {gql} from "@apollo/client";
+import {useMutation} from "@apollo/client";
+// import {invalidateQueries} from "@/lib/apolloClient";
 import {graphql} from "@/generated/graphql";
 
 const editProfileDocument = graphql(`
@@ -18,6 +17,6 @@ const editProfileDocument = graphql(`
 `)
 
 export const useEditProfile = () => {
-  const client = useApolloClient();
+  // const client = useApolloClient();
   return useMutation(editProfileDocument)
 }

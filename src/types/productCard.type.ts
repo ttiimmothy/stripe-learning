@@ -1,4 +1,4 @@
-import {ProductFragmentFragment, ProductsFragmentFragment} from "@/generated/graphql/graphql";
+import {ProductsFragmentFragment} from "@/generated/graphql/graphql";
 
 export type ProductCardType = Omit<ProductsFragmentFragment, "author"> & {
   author: {

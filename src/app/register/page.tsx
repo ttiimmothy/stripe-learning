@@ -1,5 +1,5 @@
 "use client"
-import {useCreateUser} from "@/lib/services/useCreateUser";
+import {useCreateUser} from "@/lib/services/user/useCreateUser";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, {useState} from 'react'

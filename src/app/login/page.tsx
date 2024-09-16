@@ -27,7 +27,7 @@ const Login = () => {
       // console.log(response)
       const response = await login({variables:{input:data}})
       // console.log(response)
-      const {token, user} = response.data?.login
+      const {user} = response.data?.login
       dispatch(setUser({user}))
       alert("Login successful")
       router.push("/")
@@ -45,7 +45,7 @@ const Login = () => {
           {message && <p className="text-red-500">{message}</p>}
           <button type="submit" className="w-full mt-5 bg-primary text-white hover:bg-indigo-500 font-medium rounded-md py-3">Login</button>
         </form>
-        <p className="text-center my-5 text-sm italic">Don't have an account?<Link href="/register" className="text-red-700 px-1 underline">Register</Link>here.</p>
+        <p className="text-center my-5 text-sm italic">Don&apos;t have an account?<Link href="/register" className="text-red-700 px-1 underline">Register</Link>here.</p>
       </div>
     </section>
   )

@@ -3,7 +3,7 @@ import {useFetchProduct} from "@/lib/services/product/useFetchProducts";
 import {usePostReview} from "@/lib/services/review/usePostReview";
 import {RootState} from "@/lib/store";
 import {useParams} from "next/navigation";
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import {useSelector} from "react-redux";
 
 const ReviewModal = ({modalOpen, handleClose}: {modalOpen: boolean, handleClose: () => void}) => {
@@ -27,7 +27,7 @@ const ReviewModal = ({modalOpen, handleClose}: {modalOpen: boolean, handleClose:
       productId
     }
     try {
-      const response =await postReview({
+      await postReview({
         variables: { input: newComment }
       })
       alert("Review posted successfully")

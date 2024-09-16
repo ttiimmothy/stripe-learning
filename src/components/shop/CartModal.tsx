@@ -1,10 +1,10 @@
 import {Product} from "@/types/cartSlice.type";
 import React, {useCallback, useEffect, useRef} from 'react'
-import Image from "next/image";
+// import Image from "next/image";
 import OrderSummary from "./cartModel/OrderSummary";
-import {useDispatch} from "react-redux";
-import {AppDispatch} from "@/lib/store";
-import {removeFromCart, updateQuantity} from "@/lib/features/cartSlice";
+// import {useDispatch} from "react-redux";
+// import {AppDispatch} from "@/lib/store";
+// import {removeFromCart, updateQuantity} from "@/lib/features/cartSlice";
 import CartDetails from "./cartModel/CartDetails";
 import useOnClickOutside from "@/lib/hooks/useOnClickOutside";
 const CartModal = ({products, isOpen, onClose}: {products: Product[], isOpen: boolean, onClose: () => void}) => {
