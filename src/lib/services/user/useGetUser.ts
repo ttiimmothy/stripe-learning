@@ -1,8 +1,5 @@
-import {graphql} from "@/generated/graphql";
-// import {useApolloClient, useQuery} from "@apollo/client";
+import {graphql} from "@/generated/graphql/gql";
 import {useQuery} from "@apollo/client";
-// import {useEffect} from "react";
-// import {invalidateQueries} from "@/lib/apolloClient";
 
 export const getUserQuery = graphql(`
   query GetUser {

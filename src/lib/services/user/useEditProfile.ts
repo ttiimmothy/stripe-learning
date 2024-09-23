@@ -1,6 +1,5 @@
 import {useMutation} from "@apollo/client";
-// import {invalidateQueries} from "@/lib/apolloClient";
-import {graphql} from "@/generated/graphql";
+import {graphql} from "@/generated/graphql/gql";
 
 const editProfileDocument = graphql(`
   mutation EditProfile($input: EditProfileInput!) {

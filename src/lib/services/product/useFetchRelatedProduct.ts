@@ -1,4 +1,4 @@
-import {graphql} from "@/generated/graphql";
+import {graphql} from "@/generated/graphql/gql";
 import {useQuery} from "@apollo/client";
 
 const fetchRelatedProductDocument = graphql(`

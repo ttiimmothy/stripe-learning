@@ -23,9 +23,9 @@ const ProductCard = ({ products }: { products: ProductCardType[] }) => {
             <Link href={`/shop/${product._id}`}>
               <Image src={product.image} alt={product.name} width={300} height={300} className="max-h-96 md:h-64 w-full object-cover" priority/>
             </Link>
-            <div className="hover:block absolute top-3 right-3">
+            <div className="hover:block absolute top-3 right-1">
               <button onClick={() => handleAddToCart(product)}>
-                 <i className="ri-shopping-cart-2-line bg-primary p-1.5 text-white hover:bg-primary-dark"></i>
+                 <i className="ri-shopping-cart-2-line bg-primary p-3 rounded-sm text-white hover:bg-primary-dark"></i>
               </button>
             </div>
           </div>

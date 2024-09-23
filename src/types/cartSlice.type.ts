@@ -1,4 +1,3 @@
-// import {ProductType} from "@/generated/graphql/graphql";
 import {ProductCardType} from "./productCard.type";
 
 export type Product = ProductCardType & { quantity: number };

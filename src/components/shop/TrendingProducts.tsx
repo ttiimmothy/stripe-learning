@@ -1,12 +1,10 @@
 import React, {useState} from 'react'
 import ProductCard from "./ProductCard";
-// import products from "@/data/products.json";
 import {useFetchProducts} from "@/lib/services/product/useFetchProducts";
 
 const TrendingProducts = () => {
   const [visibleProducts, setVisibleProducts] = useState(8);
   const loadingMoreProducts = () => {
-    // setVisibleProducts(visibleProducts + 4);
     setVisibleProducts(products?.products.totalProducts || (prevCount => prevCount + 4));
   }
   const {data:products, loading, error} = useFetchProducts({input: {category: "", color: "", minPrice: "", maxPrice: "", limit: "30"}})

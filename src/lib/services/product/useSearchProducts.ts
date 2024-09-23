@@ -1,4 +1,4 @@
-import {graphql} from "@/generated/graphql";
+import {graphql} from "@/generated/graphql/gql";
 import {SearchProductsQueryVariables} from "@/generated/graphql/graphql";
 import {useQuery} from "@apollo/client";
 

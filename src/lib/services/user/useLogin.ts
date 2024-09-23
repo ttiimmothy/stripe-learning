@@ -1,5 +1,4 @@
-import {graphql} from "@/generated/graphql";
-// import {LoginUserInput} from "@/generated/graphql/graphql";
+import {graphql} from "@/generated/graphql/gql";
 import {useMutation} from "@apollo/client";
 
 // use fragment need to use graphql from "@/generated/graphql"

@@ -1,13 +1,24 @@
-import { useQuery } from "@apollo/client";
-// import {invalidateQueries} from "@/lib/apolloClient";
-import {graphql} from "@/generated/graphql";
+import { gql, useQuery } from "@apollo/client";
+import {graphql} from "@/generated/graphql/gql";
 import {GetProductsQueryVariables} from "@/generated/graphql/graphql";
-const fetchProductsDocument = graphql(`
+const fetchProductsDocument = gql(`
   query GetProducts($input: GetProductsInput!) {
     products(getProductsInput: $input) {
       products {
-        ...ProductsFragment
+        __typename @skip(if: true)
+        _id
+        name
+        category
+        description
+        price
+        oldPrice
+        image
+        color
+        rating
+        createdAt
+        updatedAt
         author {
+          __typename @skip(if: true)
           _id
           email
           role
@@ -20,43 +31,54 @@ const fetchProductsDocument = graphql(`
 `);
 
 export const useFetchProducts = (variables: GetProductsQueryVariables) => {
-  // const client = useApolloClient();
   return useQuery(fetchProductsDocument, {
     variables
-    // {
-    //   input: {
-    //     category: category || "",
-    //     color: color || "",
-    //     minPrice: minPrice || "0",
-    //     maxPrice: maxPrice || ""
-    //     page,
-    //     limit
-    //   },
-    // },
-    // onCompleted: (data) => {
-    //   invalidateQueries(client, ["products"])
-    // },
   });
 };
 
-const fetchProductDocument = graphql(`
+const fetchProductDocument = gql(`
   query GetProduct($id: String!) {
     productById(productId: $id) {
       product {
-        ...ProductsFragment
+        __typename @skip(if: true)
+        _id
+        name
+        category
+        description
+        price
+        oldPrice
+        image
+        color
+        rating
+        createdAt
+        updatedAt
         author {
-          ...UserFragment
+          __typename @skip(if: true)
+          _id
+          email
+          role
         }
       }
       reviews {
-        ...ReviewFragment
+        __typename @skip(if: true)
+        _id
+        comment
+        rating
+        userId {
+          _id
+          username
+          email
+          role
+        }
+        productId
+        createdAt
+        updatedAt
       }
     }
   }
 `);
 
 export const useFetchProduct = (id:string, {skip}: {skip?: boolean} = {skip: false}) => {
-  // const client = useApolloClient();
   return useQuery(fetchProductDocument, {
     variables: {
       id

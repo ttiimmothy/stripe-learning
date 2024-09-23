@@ -13,6 +13,7 @@ const CartDetails = ({products}: {products: Product[]}) => {
     e.preventDefault();
     dispatch(removeFromCart(id));
   }
+  
   return (
     <div>
     {products.length === 0 ? <div>Your cart is empty</div> : 

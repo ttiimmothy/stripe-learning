@@ -1,4 +1,4 @@
-import {graphql} from "@/generated/graphql";
+import {graphql} from "@/generated/graphql/gql";
 import {useMutation} from "@apollo/client";
 
 const updateProductDocument = graphql(`

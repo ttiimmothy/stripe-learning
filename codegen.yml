@@ -7,6 +7,27 @@ generates:
     #   - "typescript"
     #   - "typescript-operations"
     #   - "typescript-react-apollo"
+    # config:
+    #   avoidOptionals: true
+    #   maybeValue: T | null
+    #   skipTypename: true
+    #   dedupeFragments: true
+    #   preResolveTypes: true
+    #   flattenGeneratedTypes: true
+    #   exportFragmentSpreadSubTypes: true
+    #   useTypeImports: true
+    #   inlineFragmentTypes: "combine"
+    #   dedupeOperationSuffix: true
+    #   omitOperationSuffix: true
+    #   withHooks: false
+    #   withComponent: false
+    #   withHOC: false
+    #   scalars:
+    #     Date: string
+    #   namingConvention:
+    #     typeNames: change-case-all#pascalCase
+    #     enumValues: change-case-all#upperCase
+    #   declarationKind: "interface"
     preset: "client"
     presetConfig:
       fragmentMasking: false

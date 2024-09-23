@@ -1,26 +1,11 @@
 import {Product} from "@/types/cartSlice.type";
-import React, {useCallback, useEffect, useRef} from 'react'
-// import Image from "next/image";
+import React, {useCallback, useEffect, useRef, useState} from 'react'
 import OrderSummary from "./cartModel/OrderSummary";
-// import {useDispatch} from "react-redux";
-// import {AppDispatch} from "@/lib/store";
-// import {removeFromCart, updateQuantity} from "@/lib/features/cartSlice";
 import CartDetails from "./cartModel/CartDetails";
 import useOnClickOutside from "@/lib/hooks/useOnClickOutside";
 const CartModal = ({products, isOpen, onClose}: {products: Product[], isOpen: boolean, onClose: () => void}) => {
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, onClose);
-  // useEffect(() => {
-  //   const handleMouseDown = (e: MouseEvent) => {
-  //     if (ref.current && !ref.current.contains(e.target as Node)) {
-  //       onClose()
-  //     }
-  //   }
-  //   document.addEventListener("mousedown", handleMouseDown)
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleMouseDown)
-  //   }
-  // }, [])
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -43,6 +28,10 @@ const CartModal = ({products, isOpen, onClose}: {products: Product[], isOpen: bo
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [handleClose]);
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   return (
     <div className={`fixed z-50 inset-0 bg-black bg-opacity-80 transition-opacity ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`} 
     onClick={(e) => e.stopPropagation()}
@@ -55,13 +44,14 @@ const CartModal = ({products, isOpen, onClose}: {products: Product[], isOpen: bo
           <button 
           onClick={onClose}
           className="text-gray-600 hover:text-gray-900">
-          <i className="ri-xrp-fill bg-black p-1 text-white"></i>
+          {/* <i className="ri-xrp-fill bg-black p-1 text-white"></i> */}
+          <i className="ri-close-line bg-black p-1 text-white"></i>
           </button>
           </div>
-          {/* cart details */}
+          {isMounted && <>{/* cart details */}
           <CartDetails products={products} />
           {/* calculations */}
-          {products.length > 0 && <OrderSummary />}
+          {products.length > 0 && <OrderSummary products={products}/>}</>}
         </div>
       </div>
     </div>

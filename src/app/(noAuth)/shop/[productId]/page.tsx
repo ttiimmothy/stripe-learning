@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link";
-import {useParams} from "next/navigation";
 import React from 'react'
 import Image from "next/image";
 import RatingStars from "@/components/lib/RatingStars";
@@ -11,6 +10,7 @@ import {useFetchProduct} from "@/lib/services/product/useFetchProducts";
 import {ProductType} from "@/generated/graphql/graphql";
 import {addToCart} from "@/lib/features/cartSlice";
 import ReviewCard from "@/components/ReviewCard";
+import {useParams} from "next/dist/client/components/navigation";
 const SingleProduct = () => {
   const {productId} = useParams<{productId: string}>();
   const dispatch = useDispatch<AppDispatch>();

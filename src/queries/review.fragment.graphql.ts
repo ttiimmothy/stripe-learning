@@ -1,4 +1,4 @@
-import {graphql} from "@/generated/graphql";
+import {graphql} from "@/generated/graphql/gql";
 import {gql} from "@apollo/client";
 
 export const ReviewFragment = graphql(`

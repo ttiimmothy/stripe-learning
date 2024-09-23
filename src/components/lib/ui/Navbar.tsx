@@ -1,6 +1,5 @@
 "use client";
 import CartModal from "@/components/shop/CartModal";
-// import {useGetUser} from "@/lib/services/user/useGetUser";
 import {AppDispatch, RootState} from "@/lib/store";
 import Link from "next/link";
 import React, {useEffect, useState} from 'react'
@@ -78,20 +77,17 @@ export const Navbar = () => {
               handleCartToggle()
             }}>
               <i className="ri-shopping-bag-line"></i>
-              <sup className="size-4 text-sm inline-block text-white rounded-full bg-primary text-center">
+              {isMounted && <sup className="size-4 text-sm inline-block text-white rounded-full bg-primary text-center">
                 <div className="flex justify-center items-center size-full text-xs">
                   {products.length}
                 </div>
-              </sup>
+              </sup>}
             </button>
           </span>
           {isMounted && <span>
             {
             user ? 
             <>
-            {/* <i className="ri-user-line"></i> */}
-            {/* {isMounted ? <p>Client side code executed</p>: 
-            (<p>Server side rendering</p>)} */}
             <Image onClick={handleDropdownToggle} src={user.profilePicture || AvatarImg} alt="profile" width={20} height={20} className="size-6 rounded-full cursor-pointer object-cover"/>
             {isDropdownOpen && (
               <div className="absolute right-0 mt-3 p-4 w-48 bg-white border-gray-200 rounded-lg shadow-lg z-50">
@@ -110,7 +106,6 @@ export const Navbar = () => {
             <Link href={"/login"}><i className="ri-user-line"></i></Link>
             </>
             }
-            {/* <Link href={"/login"}><i className="ri-user-line"></i></Link> */}
           </span>}
         </div>
       </nav>

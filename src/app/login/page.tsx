@@ -1,12 +1,11 @@
 "use client"
-// import {useLoginMutation} from "@/lib/features/authApi";
 import {useLogin} from "@/lib/services/user/useLogin";
 import {AppDispatch} from "@/lib/store";
 import Link from "next/link";
 import React, {useState} from 'react'
 import {useDispatch} from "react-redux";
-import {useRouter} from "next/navigation"
 import {setUser} from "@/lib/features/authSlice";
+import {useRouter} from "next/navigation";
 
 const Login = () => {
   const [message, setMessage] = useState("")
