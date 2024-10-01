@@ -5,6 +5,7 @@ import {RootState} from "@/lib/store";
 import {useParams} from "next/navigation";
 import React, { useRef, useState } from 'react'
 import {useSelector} from "react-redux";
+import {toast} from "react-toastify";
 
 const ReviewModal = ({modalOpen, handleClose}: {modalOpen: boolean, handleClose: () => void}) => {
   const [rating, setRating] = useState(0)
@@ -30,12 +31,14 @@ const ReviewModal = ({modalOpen, handleClose}: {modalOpen: boolean, handleClose:
       await postReview({
         variables: { input: newComment }
       })
-      alert("Review posted successfully")
+      toast.dismiss()
+      toast.success("Review posted successfully")
       setComment("")
       setRating(0)
       refetch()
     } catch (error) {
-      alert(error.message)
+      toast.dismiss()
+      toast.error(error.message)
     }
     handleClose()
   }

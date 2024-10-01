@@ -10,14 +10,6 @@ export const getUserQuery = graphql(`
 `)
 
 export const useGetUser = () => {
-  // const client = useApolloClient();
-  const {data, loading, error, refetch} = useQuery(getUserQuery, {
-    // onCompleted: (data) => {
-    //   invalidateQueries(client, ["user"])
-    // }
-  })
-  // useEffect((): void => {
-  //   refetch()
-  // }, [refetch])
+  const {data, loading, error, refetch} = useQuery(getUserQuery)
   return {data, loading, error, refetch}
 }

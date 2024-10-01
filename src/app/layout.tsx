@@ -3,12 +3,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "./page.css";
 import 'remixicon/fonts/remixicon.css';
-// import {Navbar} from "@/components/lib/ui/Navbar";
-// import Footer from "@/components/lib/ui/Footer";
 import StoreProvider from "./StoreProvider";
 import ApolloGraphqlProvider from "./ApolloProvider";
-// import ClientLayout from "./ClientLayout";
-import "symbol-observable"
+import {Slide, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,6 +36,20 @@ export default function RootLayout({
       >
         <ApolloGraphqlProvider>
         <StoreProvider>
+          <ToastContainer
+            position="top-center"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover
+            theme="light"
+            transition={Slide}
+            className={"text-sm"}
+          />
           {children}
         </StoreProvider>
         </ApolloGraphqlProvider>

@@ -1,43 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Product, CartState } from "@/types/cartSlice.type";
 import {ProductCardType} from "@/types/productCard.type";
+import {toast} from "react-toastify";
+import {setGrandTotal, setSelectedItems, setTax, setTotalPrice, updateState} from "../cart/cartUpdateState";
 
-
+const defaultProduct = {products:[],selectedItems: 0,totalPrice: 0,tax: 0,taxRate: 0.13,grandTotal: 0}
 const loadProductFromLocalStorage = () => {
   try {
     const serializedState = localStorage.getItem("product")
-    if (serializedState == null) return {products:[],selectedItems: 0,
-      totalPrice: 0,
-      tax: 0,
-      taxRate: 0.05,
-      grandTotal: 0
-    }
+    if (serializedState == null) return defaultProduct
     const parsedProducts = JSON.parse(serializedState)
-    const taxRate = 0.05
-    const setSelectedItems = (products: Product[]) => products.reduce((total: number, product: Product) => {
-      return Number(total + product.quantity)
-    }, 0)
-    
-    const setTotalPrice = (products: Product[]) => products.reduce((total: number, product: Product) => {
-      return Number(total + product.price * product.quantity)
-    }, 0)
-    const setTax = (products: Product[]) => setTotalPrice(products) * taxRate;
-    const setGrandTotal = (products: Product[]) => setTotalPrice(products) + setTotalPrice(products) * taxRate;
-    return {products:parsedProducts,selectedItems:setSelectedItems(parsedProducts),totalPrice:setTotalPrice(parsedProducts),tax:setTax(parsedProducts),taxRate,grandTotal:setGrandTotal(parsedProducts)}
+    const taxRate = 0.13
+    return {products:parsedProducts,selectedItems:setSelectedItems(parsedProducts),totalPrice:setTotalPrice(parsedProducts),tax:setTax(parsedProducts, taxRate),taxRate,grandTotal:setGrandTotal(parsedProducts, taxRate)}
   } catch (error) {
-    return {
-      products:[],
-      selectedItems: 0,
-      totalPrice: 0,
-      tax: 0,
-      taxRate: 0.05,
-      grandTotal: 0
-    }
+    return defaultProduct
   }
 }
 
 const initialState: CartState = loadProductFromLocalStorage()
-
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -49,8 +29,8 @@ export const cartSlice = createSlice({
       if (!isExist) {
         state.products.push({...action.payload, quantity: 1})
       } else {
-        alert("Item already added");
-        // console.log("Item already added");
+        toast.dismiss()
+        toast.warn("Item already added",{autoClose: 1000});
       }
       localStorage.setItem("product",JSON.stringify(state.products));
       updateState(state);
@@ -84,26 +64,7 @@ export const cartSlice = createSlice({
       localStorage.setItem("product",JSON.stringify([]));
     }
   },
-});
-
-export const setSelectedItems = (state: CartState) => state.products.reduce((total: number, product: Product) => {
-  return Number(total + product.quantity)
-}, 0)
-
-export const setTotalPrice = (state: CartState) => state.products.reduce((total: number, product: Product) => {
-  return Number(total + product.price * product.quantity)
-}, 0)
-
-export const setTax = (state: CartState) => setTotalPrice(state) * state.taxRate;
-
-export const setGrandTotal = (state: CartState) => setTotalPrice(state) + setTotalPrice(state) * state.taxRate;
-
-const updateState = (state: CartState) => {
-  state.selectedItems = setSelectedItems(state);
-  state.totalPrice = setTotalPrice(state);
-  state.tax = setTax(state);
-  state.grandTotal = setGrandTotal(state);
-}
+})
 
 export const { addToCart, updateQuantity, removeFromCart, clearCart } = cartSlice.actions;
 

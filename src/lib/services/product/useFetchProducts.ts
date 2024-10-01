@@ -1,5 +1,4 @@
 import { gql, useQuery } from "@apollo/client";
-import {graphql} from "@/generated/graphql/gql";
 import {GetProductsQueryVariables} from "@/generated/graphql/graphql";
 const fetchProductsDocument = gql(`
   query GetProducts($input: GetProductsInput!) {

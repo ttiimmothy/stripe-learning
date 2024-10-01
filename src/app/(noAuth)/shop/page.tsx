@@ -1,13 +1,10 @@
 "use client"
 import Banner from "@/components/lib/ui/Banner";
-// import {Product} from "@/types/product.type";
 import React, {useState} from 'react'
-// import productsData from "@/data/products.json"
 import ProductCard from "@/components/shop/ProductCard";
 import ShopFiltering from "@/components/shop/ShopFiltering";
 import {Filters, FilterState} from "@/types/filter.type";
 import {useFetchProducts} from "@/lib/services/product/useFetchProducts";
-// import {ProductType} from "@/generated/graphql/graphql";
 import Pagination from "@/components/Pagination";
 
 const ShopPage = () => {
@@ -16,14 +13,12 @@ const ShopPage = () => {
     colors: ["all", "black", "red", "gold", "blue", "silver", "beige", "green"],
     priceRanges: [{label: "Under $50", min: 0, max: 50}, {label: "$50 - $100", min: 50, max: 100}, {label: "$100 - $200", min: 100, max: 200}, {label: "$200 and above", min: 200, max: Infinity}],
   }
-  // const [products, setProducts] = useState<Product[]>(productsData)
   const [filterState, setFilterState] = useState<FilterState>({
     category: "all",
     color: "all",
     priceRange: {label: "", min: 0, max: Infinity},
   })
   const [currentPage, setCurrentPage] = useState(1)
-  // const [productsPerPage, setProductsPerPage] = useState(16)
   const productsPerPage = 16
   const {category, color, priceRange} = filterState;
   const [minPrice, maxPrice] = [priceRange.min, priceRange.max]
@@ -36,8 +31,6 @@ const ShopPage = () => {
       priceRange: {label: "", min: 0, max: Infinity},
     })
   }
-  // if (loading) return <div>Loading...</div>
-  // if (error) return <div>Error loading products</div>
   const totalFetchedProducts = products?.products.products
   const startProduct = (currentPage - 1) * productsPerPage + 1
   const endProduct = startProduct + totalFetchedProducts?.length - 1
@@ -58,16 +51,6 @@ const ShopPage = () => {
             <h3 className="text-xl font-medium mb-4">Showing {startProduct} to {endProduct} of {products?.products.totalProducts} products</h3>
             <div className="min-h-192">{products && <ProductCard products={totalFetchedProducts} />}</div>
             <Pagination currentPage={currentPage} totalPages={products?.products.totalPages || 1} handlePageChange={handlePageChange} />
-            {/* <div className="mt-6 flex justify-center">
-              <button className={"bg-gray-300 text-gray-700 px-4 py-2 mr-2 rounded-md"} onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
-              {
-                [...Array(products?.products.totalPages)].map((_, index) => (
-                  <button key={index} className={`size-10 flex justify-center items-center mx-1 rounded-md ${index + 1 === currentPage ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-700"}`}
-                  onClick={() => handlePageChange(index + 1)}>{index + 1}</button>
-                ))
-              }
-              <button className={"bg-gray-300 text-gray-700 px-4 py-2 ml-2 rounded-md"} onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === products?.products.totalPages}>Next</button>
-            </div> */}
             </>
             }
           </div>

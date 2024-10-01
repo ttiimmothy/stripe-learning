@@ -77,9 +77,9 @@ a {
   text-decoration: none;
 }
 
-body {
+/* body {
   font-family: "Poppins", sans-serif;
-}
+} */
 
 nav {
   max-width: var(--max-width-1200);

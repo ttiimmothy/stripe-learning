@@ -48,7 +48,8 @@ const CartModal = ({products, isOpen, onClose}: {products: Product[], isOpen: bo
           <i className="ri-close-line bg-black p-1 text-white"></i>
           </button>
           </div>
-          {isMounted && <>{/* cart details */}
+          {isMounted && <>
+          {/* cart details */}
           <CartDetails products={products} />
           {/* calculations */}
           {products.length > 0 && <OrderSummary products={products}/>}</>}

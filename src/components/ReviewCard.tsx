@@ -5,11 +5,9 @@ import Image from "next/image"
 import {formatDate} from "@/utils/formatDate";
 import RatingStars from "./lib/RatingStars";
 import ReviewModal from "@/components/ReviewModal";
-// import {useParams} from "next/navigation";
 
 const ReviewCard = ({productReviews}: {productReviews: ReviewsType[]}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [reviews, setReviews] = useState(productReviews || []);
   const reviews = productReviews || [];
   const handleOpenReviewModal = () => {
     setIsModalOpen(true);
@@ -17,7 +15,6 @@ const ReviewCard = ({productReviews}: {productReviews: ReviewsType[]}) => {
   const handleCloseReviewModal = () => {
     setIsModalOpen(false);
   }
-  // const {productId} = useParams<{productId: string}>()
 
   return (
     <div className="my-6 bg-white p-8">

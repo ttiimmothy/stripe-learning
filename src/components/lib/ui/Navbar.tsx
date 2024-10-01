@@ -9,6 +9,7 @@ import AvatarImg from "@/assets/avatar.png"
 import {useLogout} from "@/lib/services/user/useLogout";
 import {useRouter} from "next/navigation";
 import {logout} from "@/lib/features/authSlice";
+import {toast} from "react-toastify";
 export const Navbar = () => {
   const products = useSelector((state: RootState) => state.cart.products);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -17,7 +18,6 @@ export const Navbar = () => {
   }
   const dispatch = useDispatch<AppDispatch>();
   const {user} = useSelector((state: RootState) => state.auth);
-  // const {data, loading, error} = useGetUser();
   const [logoutUser] = useLogout();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const handleDropdownToggle = () => {
@@ -38,7 +38,6 @@ export const Navbar = () => {
     {"label": "Orders", path: "/dashboard/orders"}
   ]
   const dropdownMenus = user?.role === "admin" ? [...adminDropdownMenus] : [...userDropdownMenus]
-  // const [profilePicture, setProfilePicture] = useState<string | null>(null)
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     setIsMounted(true);
@@ -47,10 +46,12 @@ export const Navbar = () => {
   const handleLogout = async () => {
     try {
       await logoutUser()
-       dispatch(logout())
-      router.push("/")
+      dispatch(logout())
+      toast.dismiss()
+      toast.success("Logout success")
+      router.push("/login")
     } catch (error) {
-      throw error
+      toast.error("Logout failed");
     }
   }
   return (
@@ -102,7 +103,6 @@ export const Navbar = () => {
               </div>
             )}</> : 
             <>
-            {/* <Image src={""} alt={"profile"} loading={"lazy"} width={20} height={20} className="size-0"/> */}
             <Link href={"/login"}><i className="ri-user-line"></i></Link>
             </>
             }
