@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
-import TimelineStep from "@/components/order/TimelineStep";
+import TimelineStep from "@/components/order/TimelineStep"
 import React, {useState} from 'react'
 
 const CheckoutSuccess = () => {
