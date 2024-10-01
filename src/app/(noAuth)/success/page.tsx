@@ -1,3 +1,5 @@
+"use client"
+import TimelineStep from "@/components/order/TimelineStep";
 import React, {useState} from 'react'
 
 const CheckoutSuccess = () => {
@@ -31,7 +33,8 @@ const CheckoutSuccess = () => {
   const [isCurrent, setIsCurrent] = useState([true, false, false, false])
   return (
     <div>
-      
+      {steps.map((step,index) => (<TimelineStep step={step} icon={step.icon} description={step.description} isCompleted={isCompleted[index]} isCurrent={isCurrent[index]} isLastStep={index == steps.length - 1} 
+      key={`step${index}`}/>))}
     </div>
   )
 }

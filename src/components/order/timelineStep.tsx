@@ -1,8 +1,8 @@
 import {OrderFragmentFragment} from "@/generated/graphql/graphql";
 import {Step, TimelineStepIcon} from "@/types/timelineStep.type";
-import React, {useState} from 'react'
+import React from 'react'
 
-const timelineStep = ({step, icon, order, description, isCompleted, isCurrent, isLastStep}:{step: Step, icon:TimelineStepIcon,order: OrderFragmentFragment, description: string, isCompleted: boolean, isCurrent:boolean, 
+const TimelineStep = ({step, icon, order, description, isCompleted, isCurrent, isLastStep}:{step: Step, icon:TimelineStepIcon,order?: OrderFragmentFragment, description: string, isCompleted: boolean, isCurrent:boolean, 
 isLastStep: boolean}) => {
   const iconBgColor = isCompleted || isCurrent ? `bg-${icon.bgColor}` : 'bg-gray-100';
   const iconTextColor = isCompleted || isCurrent ? 'text-white' : `text-${icon.textColor}`;
@@ -32,4 +32,4 @@ isLastStep: boolean}) => {
   )
 }
 
-export default timelineStep
+export default TimelineStep
