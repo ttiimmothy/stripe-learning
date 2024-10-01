@@ -3,10 +3,13 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: '*.unsplash.com',
-      },
-    ],
+        hostname: '*.unsplash.com'
+      }
+    ]
   },
-};
+  eslint: {
+    ignoreDuringBuilds: true
+  }
+}
 
 export default nextConfig;

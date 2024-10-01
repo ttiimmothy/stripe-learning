@@ -22,7 +22,7 @@ isLastStep: boolean}) => {
         {step.label}
       </h3>
       <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-        {order.updatedAt ? new Date(order.updatedAt).toLocaleString() : 'Time'}
+        {order && order.updatedAt ? new Date(order.updatedAt).toLocaleString() : 'Time'}
       </time>
       <p className={`text-base font-normal ${descriptionTextColor} dark:text-gray-400`}>
         {description}
