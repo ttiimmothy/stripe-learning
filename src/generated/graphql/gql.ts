@@ -33,7 +33,7 @@ const documents = {
     "\n  mutation Login($input: LoginUserInput!) {\n    login(loginUserInput: $input) {\n      message\n      token\n      user {\n        ...UserFragment\n        profilePicture\n        bio\n        profession\n      }\n    }\n  }\n": types.LoginDocument,
     "\n  mutation Logout {\n    logout {\n      message\n    }\n  }\n": types.LogoutDocument,
     "\n  mutation UpdateUserRole($input: UpdateUserRoleInput!) {\n    updateUserRole(updateUserRoleInput: $input) {\n      message\n    }\n  }\n": types.UpdateUserRoleDocument,
-    "\n  fragment OrderFragment on Order {\n    _id\n    orderId\n    products {\n      productId\n      quantity\n    }\n    amount\n    email\n    status\n    createdAt\n    updatedAt\n  }\n": types.OrderFragmentFragmentDoc,
+    "\n  fragment OrderFragment on Order {\n    __typename @skip(if: true)\n    _id\n    orderId\n    products {\n      productId\n      quantity\n    }\n    amount\n    email\n    status\n    createdAt\n    updatedAt\n  }\n": types.OrderFragmentFragmentDoc,
     "\n  fragment ProductFragment on Product {\n    _id\n    name\n    category\n    description\n    price\n    oldPrice\n    image\n    color\n    rating\n    author\n    createdAt\n    updatedAt\n  }\n": types.ProductFragmentFragmentDoc,
     "\n  fragment ProductsFragment on ProductType {\n    _id\n    name\n    category\n    description\n    price\n    oldPrice\n    image\n    color\n    rating\n    createdAt\n    updatedAt\n  }\n": types.ProductsFragmentFragmentDoc,
     "\n  fragment ReviewFragment on ReviewsType {\n    _id\n    comment\n    rating\n    userId {\n      ...UserFragment\n    }\n    productId\n    createdAt\n    updatedAt\n  }\n": types.ReviewFragmentFragmentDoc,
@@ -138,7 +138,7 @@ export function graphql(source: "\n  mutation UpdateUserRole($input: UpdateUserR
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment OrderFragment on Order {\n    _id\n    orderId\n    products {\n      productId\n      quantity\n    }\n    amount\n    email\n    status\n    createdAt\n    updatedAt\n  }\n"): (typeof documents)["\n  fragment OrderFragment on Order {\n    _id\n    orderId\n    products {\n      productId\n      quantity\n    }\n    amount\n    email\n    status\n    createdAt\n    updatedAt\n  }\n"];
+export function graphql(source: "\n  fragment OrderFragment on Order {\n    __typename @skip(if: true)\n    _id\n    orderId\n    products {\n      productId\n      quantity\n    }\n    amount\n    email\n    status\n    createdAt\n    updatedAt\n  }\n"): (typeof documents)["\n  fragment OrderFragment on Order {\n    __typename @skip(if: true)\n    _id\n    orderId\n    products {\n      productId\n      quantity\n    }\n    amount\n    email\n    status\n    createdAt\n    updatedAt\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
