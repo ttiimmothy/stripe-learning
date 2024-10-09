@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 import TimelineStep from "@/components/order/TimelineStep"
+import {clearCart} from "@/lib/features/cartSlice";
+import {AppDispatch} from "@/lib/store";
 import React, {useEffect, useState} from 'react'
+import {useDispatch} from "react-redux";
 
 const CheckoutSuccess = () => {
   const steps = [
@@ -32,6 +35,10 @@ const CheckoutSuccess = () => {
   ]
   const [isCompleted, setIsCompleted] = useState([false, false, false, false])
   const [isCurrent, setIsCurrent] = useState(0)
+  const dispatch = useDispatch<AppDispatch>()
+  useEffect(() => {
+    dispatch(clearCart())
+  },[])
   return (
     <div className="section__container">
     <h2 className="font-semibold mb-4 text-2xl">Payment {steps[isCurrent].status}</h2>
