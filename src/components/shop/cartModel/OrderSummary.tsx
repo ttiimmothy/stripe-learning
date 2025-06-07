@@ -17,9 +17,10 @@ const OrderSummary = ({products}: {products: Product[]}) => {
   }
   const [checkout] = useCheckout();
   const handleCheckout = async (checkoutProducts: Product[]) => {
-    try {
+    
       const stripe = await stripePromise
       const {data:session} = await checkout({variables:{input:{products:checkoutProducts}}})
+      console.log(session)
       if (session.checkout) {
         const result = await stripe.redirectToCheckout({
           sessionId: session.checkout.id,
@@ -29,10 +30,7 @@ const OrderSummary = ({products}: {products: Product[]}) => {
           toast.error("Checkout seesion id cannot retrieve a checkout session")
         }
       }
-    }catch (error){
-      toast.dismiss()
-      toast.error("Require to login to proceed checkout")
-    }
+    
   }
 
   return (
