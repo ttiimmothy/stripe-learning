@@ -1,4 +1,4 @@
-# Demo Ecommerce
+# Stripe Learning
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
@@ -39,4 +39,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## License
 
-Demo Ecommerce is licensed under [Apache License 2.0](LICENSE).
+Stripe Learning is licensed under [Apache License 2.0](LICENSE).
